@@ -1,0 +1,14 @@
+<h2>Update Article</h2>
+{{data | json}}
+<h3>title: {{data.dtitle}}</h3>
+<h3>body: {{data.dbody}}</h3>
+<form #f = "ngForm">
+  <label>Title</label>
+  <input type="text" name="title" [(ngModel)] = "data.dtitle">
+  <br>
+  <label>Body</label>
+  <input type="text" name="body" [(ngModel)] = "data.dbody">
+  <br>
+  <input type="button" (click)="createOrUpdateArticle(f)" value="Create or Update Article">
+  <button mat-raised-button (click)="closeDialog()">Cancel</button>
+</form>
