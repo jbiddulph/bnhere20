@@ -20,18 +20,18 @@
             <button mat-raised-button (click)="openDialog(article)">Open</button>
           </td>
         </tr>
-      </table>here: {{articles.data.links.next}}
+      </table>
 
-      <br>
-      <form #f = "ngForm">
-        <label>Title</label>
-        <input type="text" name="title" [(ngModel)] = "selectedArticle.title">
-        <br>
-        <label>Body</label>
-        <input type="text" name="body" [(ngModel)] = "selectedArticle.body">
-        <br>
-        <input type="button" (click)="createOrUpdateArticle(f)" value="Create or Update Article">
-      </form>
+<!--      <br>-->
+<!--      <form #f = "ngForm">-->
+<!--        <label>Title</label>-->
+<!--        <input type="text" name="title" [(ngModel)] = "selectedArticle.title">-->
+<!--        <br>-->
+<!--        <label>Body</label>-->
+<!--        <input type="text" name="body" [(ngModel)] = "selectedArticle.body">-->
+<!--        <br>-->
+<!--        <input type="button" (click)="createOrUpdateArticle(f)" value="Create or Update Article">-->
+<!--      </form>-->
     </div>
   </section>
 </div>

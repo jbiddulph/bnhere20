@@ -5,8 +5,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {UpdateArticleDialogComponent} from "./update-article-dialog/update-article-dialog.component";
 
 export interface DialogData {
-  dtitle: string;
-  dbody: string;
+  id: number;
+  title: string;
+  body: string;
 }
 @Component({
   selector: 'app-articles',
@@ -17,8 +18,9 @@ export class ArticlesComponent implements OnInit {
   articles:  Article[];
   selectedArticle:  Article  = { id:'', title:null, body:  null, updated_at: null};
 
-  dtitle: string;
-  dbody: string;
+  id: number;
+  title: string;
+  body: string;
   constructor(
     private articleService: ArticlesService,
     public dialog: MatDialog) { }
@@ -53,7 +55,7 @@ export class ArticlesComponent implements OnInit {
     console.log('ARTCL: ', article);
     const dialogRef = this.dialog.open(UpdateArticleDialogComponent, {
       width: '250px',
-      data: {title: article.title, body: article.body}
+      data: {id: article.id, title: article.title, body: article.body}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

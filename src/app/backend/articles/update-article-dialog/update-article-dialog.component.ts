@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DialogData} from "../articles.component";
 import {Article} from "../../../../models/article.model";
 import {ArticlesService} from "../articles.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-article-dialog',
@@ -11,21 +12,27 @@ import {ArticlesService} from "../articles.service";
 })
 export class UpdateArticleDialogComponent implements OnInit {
   articles:  Article[];
-  selectedArticle;
+  selectedArticle:  Article  = { id:'', title:null, body:  null, updated_at: null};
+
   constructor(private articleService: ArticlesService,
+              private router: Router,
               public dialogRef: MatDialogRef<UpdateArticleDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   closeDialog() {
     this.dialogRef.close();
   }
-  createOrUpdateArticle(form){
-    console.log('SelectedArticle Form: ', form)
+  createOrUpdateArticle(form, article: Article){
+    this.selectedArticle = article;
+
+    console.log('SelectedArticle: ', this.selectedArticle)
     if(this.selectedArticle && this.selectedArticle.id){
       form.value.id = this.selectedArticle.id;
       this.articleService.updateArticle(form.value).subscribe((article: Article)=>{
         console.log("Article updated" , article);
         this.reloadData();
+        this.router.navigate(['/articles']);
+        this.closeDialog();
         this.selectedArticle= new class implements Article {
           body: string;
           id: any;
@@ -35,10 +42,11 @@ export class UpdateArticleDialogComponent implements OnInit {
       });
     }
     else{
-
       this.articleService.createArticle(form.value).subscribe((article: Article)=>{
         console.log("Article created, ", article);
+        this.router.navigate(['/articles']);
         this.reloadData();
+        this.closeDialog();
       });
     }
 
@@ -46,10 +54,13 @@ export class UpdateArticleDialogComponent implements OnInit {
   reloadData() {
     this.articleService.readArticles().subscribe((articles: Article[])=>{
       this.articles = articles;
-      console.log(this.articles);
+      console.log('RELOAD: ', this.articles);
     })
   }
   ngOnInit() {
+    this.articleService.readArticles().subscribe((articles: Article[])=>{
+      this.articles = articles;
+    })
     console.log('DATAx: ', this.data);
   }
 
