@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 })
 export class UpdateArticleDialogComponent implements OnInit {
   articles:  Article[];
-  selectedArticle:  Article  = { id:'', title:null, body:  null, updated_at: null};
+  now: Date;
+  selectedArticle:  Article  = { id:this.data.id, title:this.data.title, body:  this.data.body, updated_at: this.now};
 
   constructor(private articleService: ArticlesService,
               private router: Router,

@@ -51,6 +51,16 @@ export class ArticlesComponent implements OnInit {
 
   }
 
+  newArticle(): void {
+    const dialogRef = this.dialog.open(UpdateArticleDialogComponent, {
+      width: '250px',
+      data: {id: '', title: '', body: ''}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   openDialog(article: Article): void {
     console.log('ARTCL: ', article);
     const dialogRef = this.dialog.open(UpdateArticleDialogComponent, {
