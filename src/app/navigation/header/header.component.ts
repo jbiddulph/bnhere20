@@ -1,6 +1,6 @@
 import {Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core';
 import {Subscription} from "rxjs";
-import {AuthService} from "../../auth/auth.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',

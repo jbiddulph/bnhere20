@@ -27,8 +27,8 @@
         name="password"
         required
         minlength="6"
-        #password="ngModel">
-      <mat-hint align="end">{{password.value?.length}}/6</mat-hint>
+        #pwinput="ngModel">
+      <mat-hint align="end">{{pwinput.value?.length}}/6</mat-hint>
       <mat-error>Has to be at least 6 characters long</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -36,16 +36,13 @@
         type="password"
         matInput
         placeholder="Confirm password"
-        name="passwordconf"
+        name="password_confirmation"
         class="form-control"
-        [(ngModel)]="form.passwordconf"
+        [(ngModel)]="form.password_confirmation"
         required
         minlength="6"
-        #passwordconf="ngModel">
-      <div class="alert alert-danger" [hidden]="!error.passwordconf">
-        {{error.passwordconf}}
-      </div>
-      <mat-hint align="end">{{passwordconf.value?.length}}/6</mat-hint>
+        #pwinputconf="ngModel">
+      <mat-hint align="end">{{pwinputconf.value?.length}}/6</mat-hint>
       <mat-error>Has to be at least 6 characters long</mat-error>
     </mat-form-field>
     <mat-form-field>

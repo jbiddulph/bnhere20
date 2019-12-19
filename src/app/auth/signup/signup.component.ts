@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AuthService} from "../auth.service";
-import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-signup',
@@ -17,13 +16,10 @@ export class SignupComponent implements OnInit {
     passwordconf: null
   }
   public error = [];
-  constructor(
-    private authService: AuthService,
-    private http: HttpClient) { }
+  constructor(private authserv: AuthService) { }
 
-  onSubmit(form: NgForm) {
-    console.log(this.form);
-    return this.http.post('http://localhost:8000/api/signup', this.form).subscribe(
+  onSubmit() {
+    this.authserv.signup(this.form).subscribe(
       data => console.log(data),
       error => this.handleError(error),
     );
