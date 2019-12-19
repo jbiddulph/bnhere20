@@ -19,6 +19,7 @@ export class AuthService {
     return this.http.post<User>(`${this.PHP_API_SERVER}/api/auth`, authData);
     this.user = {
       email: authData.email,
+      name: authData.name,
       password: authData.password,
       // userId: Math.round(Math.random() * 100000).toString()
     }
@@ -29,6 +30,7 @@ export class AuthService {
     return this.http.post<User>(`${this.PHP_API_SERVER}/api/auth`, authData);
     this.user = {
       email: authData.email,
+      name: authData.name,
       password: authData.password,
       // userId: Math.round(Math.random() * 100000).toString()
     }

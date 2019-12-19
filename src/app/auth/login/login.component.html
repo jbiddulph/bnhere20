@@ -1,17 +1,21 @@
 <section class="login-form">
-  <form
+  <form #loginForm=ngForm
     fxLayout="column"
     fxLayoutAlign="center center"
     fxLayoutGap="10px"
-    [formGroup]="loginForm"
   (ngSubmit)="onSubmit()">
     <h2>Login</h2>
+    <div class="alert alert-danger" [hidden]="!error">
+      {{error}}
+    </div>
     <mat-form-field>
       <input
         type="email"
         matInput
+        name="email"
         placeholder="Your email"
-        formControlName="email">
+        [(ngModel)]="form.email"
+        required>
       <mat-hint>Please enter a valid email</mat-hint>
       <mat-error>Invalid or missing email</mat-error>
     </mat-form-field>
@@ -19,8 +23,10 @@
       <input
         type="password"
         matInput
+        name="password"
         placeholder="Your password"
-        formControlName="password">
+        [(ngModel)]="form.password"
+        required>
       <mat-hint>Please enter a password</mat-hint>
       <mat-error>Missing password</mat-error>
     </mat-form-field>
