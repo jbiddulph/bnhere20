@@ -53,7 +53,7 @@ export class ArticlesComponent implements OnInit {
 
   newArticle(): void {
     const dialogRef = this.dialog.open(UpdateArticleDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: {id: '', title: '', body: ''}
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -64,7 +64,7 @@ export class ArticlesComponent implements OnInit {
   openDialog(article: Article): void {
     console.log('ARTCL: ', article);
     const dialogRef = this.dialog.open(UpdateArticleDialogComponent, {
-      width: '250px',
+      width: '300px',
       data: {id: article.id, title: article.title, body: article.body}
     });
     dialogRef.afterClosed().subscribe(result => {

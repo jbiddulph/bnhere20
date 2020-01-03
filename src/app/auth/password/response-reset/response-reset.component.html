@@ -1,1 +1,47 @@
-<p>response-reset works!</p>
+<section class="login-form">
+  <form #resetPasswordForm=ngForm
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+        (ngSubmit)="changePassword()">
+    <h2>Reset Password</h2>
+    {{form.resetToken}}
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        name="email"
+        placeholder="Your email"
+        [(ngModel)]="form.email"
+        required>
+      <mat-hint>Please enter a valid email</mat-hint>
+      <mat-error>Invalid or missing email</mat-error>
+    </mat-form-field>
+<!--    <span class="alert alert-danger" [hidden]="!error.email">{{error.email}}</span>-->
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        name="password"
+        placeholder="Your password"
+        [(ngModel)]="form.password"
+        required>
+      <mat-hint>Please enter a password</mat-hint>
+      <mat-error>Missing password</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        name="password_confirmation"
+        placeholder="Confirm password"
+        [(ngModel)]="form.password_confirmation"
+        required>
+      <mat-hint>Confirm password</mat-hint>
+      <mat-error>Missing password</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="resetPasswordForm.invalid">Change Password</button>
+
+  </form>
+</section>

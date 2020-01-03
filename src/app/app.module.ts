@@ -18,7 +18,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UpdateArticleDialogComponent } from './admin/articles/update-article-dialog/update-article-dialog.component';
 import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
-
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import {BeforeLoginService} from "./services/before-login.service";
+import {AfterLoginService} from "./services/after-login.service";
 
 @NgModule({
   declarations: [
@@ -42,9 +44,12 @@ import { ResponseResetComponent } from './auth/password/response-reset/response-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SnotifyModule
   ],
   entryComponents: [UpdateArticleDialogComponent],
-  providers: [AuthService, ArticlesService, HttpClient],
+  providers: [AuthService, ArticlesService, HttpClient, BeforeLoginService, AfterLoginService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ng-snotify/styles/material.scss",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
@@ -94,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "../node_modules/ng-snotify/styles/material.scss",
               "src/styles.scss"
             ],
             "scripts": []

@@ -31,5 +31,8 @@
       <mat-error>Missing password</mat-error>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Submit</button>
+    <small class="float-right">
+      <a routerLink="/request-password-reset">Reset Password</a>
+    </small>
   </form>
 </section>

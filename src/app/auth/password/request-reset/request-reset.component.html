@@ -1,1 +1,21 @@
-<p>request-reset works!</p>
+<section class="login-form">
+  <form #RequestResetForm=ngForm
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+        (ngSubmit)="onSubmit()">
+    <h2>Send email for reset password</h2>
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        name="email"
+        placeholder="Your email"
+        [(ngModel)]="form.email"
+        required>
+      <mat-hint>Please enter a valid email</mat-hint>
+      <mat-error>Invalid or missing email</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="RequestResetForm.invalid">Send password reset email</button>
+  </form>
+</section>

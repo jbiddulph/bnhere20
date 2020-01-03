@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {TokenService} from "../../services/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,13 +14,24 @@ export class LoginComponent implements OnInit {
     password: null
   };
   public error = null;
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private token: TokenService,
+    private router: Router
+  ) { }
 
   onSubmit() {
     this.authService.login(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error),
     );
+  }
+
+  handleResponse(data)
+  {
+    this.token.handle(data.access_token);
+    this.authService.changeAuthStatus(true);
+    this.router.navigateByUrl('/articles');
   }
 
   handleError(error) {

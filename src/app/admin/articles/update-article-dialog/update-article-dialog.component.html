@@ -1,11 +1,11 @@
-<h2>Update Article</h2>
+<h3>Update Article</h3>
 <form #f="ngForm">
-  <label>Title</label>
-  <input type="text" name="title" [(ngModel)]="data.title">
-  <br>
-  <label>Body</label>
-  <input type="text" name="body" [(ngModel)]="data.body">
-  <br>
-  <input type="button" (click)="createOrUpdateArticle(f, selectedArticle)" value="Create or Update Article">
+  <mat-form-field class="example-full-width">
+    <input matInput name="title" [(ngModel)]="data.title" placeholder="Title">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput name="body" [(ngModel)]="data.body" placeholder="Body">
+  </mat-form-field>
+  <button mat-raised-button (click)="createOrUpdateArticle(f, selectedArticle)">Create or update</button>
   <button mat-raised-button (click)="closeDialog()">Cancel</button>
 </form>

@@ -16,8 +16,7 @@
           <td>{{ article.body }}</td>
           <td>
             <button (click)="deleteArticle(article.id)">Delete</button>
-            <button (click)="selectArticle(article)">Update</button>
-            <button mat-raised-button (click)="openDialog(article)">Open</button>
+            <button mat-raised-button (click)="openDialog(article)">Edit</button>
           </td>
         </tr>
       </table>
